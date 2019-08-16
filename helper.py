@@ -22,7 +22,7 @@ def get_start_date(issue):
 
 
 def format_date(date):
-    return date.strftime('%-d/%-m/%Y')
+    return date.strftime('%Y-%m-%d')
 
 
 def generate_row(issue):
@@ -51,7 +51,7 @@ def export_to_csv(issues, file):
                          skipinitialspace=True)
 
     with open(file, 'w+') as csv_file:
-        writer = csv.writer(csv_file, dialect='myDialect')
+        writer = csv.writer(csv_file, dialect='myDialect', lineterminator='\n')
         writer.writerows(rows)
 
     csv_file.close()
