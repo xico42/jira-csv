@@ -44,7 +44,7 @@ def generate_row(issue):
 
 
 def export_to_csv(issues, file):
-    rows = [generate_row(issue) for issue in issues]
+    rows = [generate_row(issue) for issue in sorted(issues, key=lambda issue: create_date(issue.fields.resolutiondate))]
 
     csv.register_dialect('myDialect',
                          quoting=csv.QUOTE_ALL,
