@@ -50,8 +50,7 @@ def export_to_csv(issues, file):
                          quoting=csv.QUOTE_ALL,
                          skipinitialspace=True)
 
-    with open(file, 'w+') as csv_file:
-        writer = csv.writer(csv_file, dialect='myDialect', lineterminator='\n')
-        writer.writerows(rows)
-
-    csv_file.close()
+    # with open(file, 'w+') as csv_file:
+    writer = csv.writer(file, dialect='myDialect', lineterminator='\n')
+    writer.writerows(rows)
+    file.flush()

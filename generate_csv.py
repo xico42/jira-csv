@@ -36,7 +36,7 @@ def main():
     if len(sys.argv) > 1:
         output = sys.argv[1]
 
-    export_to_csv(issues, output)
+    export_to_csv(issues, open(output, mode="w+"))
 
 
 if __name__ == '__main__':
