@@ -22,7 +22,7 @@ def home(name=None):
 def generate_csv():
     load_dotenv()
     auth = (os.getenv('JIRA_EMAIL'), os.getenv('JIRA_API_KEY'))
-    jira = JIRA(os.getenv('JIRA_URL'), basic_auth=auth)
+    jira = JIRA(request.form["url"], basic_auth=auth)
     query = request.form["query"]
 
     issues = load_issues(jira, query)
@@ -36,3 +36,7 @@ def generate_csv():
         return response
 
     return send_file(temp.name, attachment_filename="output.csv", as_attachment=True, mimetype="text/plain")
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port="5000", load_dotenv=True)
