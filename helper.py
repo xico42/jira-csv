@@ -10,7 +10,7 @@ def get_status_changelog(issue, to_status='DEVELOPMENT'):
     changes = (
         (create_date(hist.created), item)
         for hist in issue.changelog.histories for item in hist.items
-        if item.field == 'status' and item.toString == to_status
+        if item.field == 'status' and item.toString.lower() == to_status.lower()
     )
     return sorted(changes, key=lambda c: c[0])
 
